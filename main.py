@@ -110,6 +110,23 @@ def prepare_vectorizer(df):
 
 
 
+
+
+def prediction(args):
+    user_input = {'region': args.region, 'day': int(args.day), 'month': int(args.month), 'year': int(args.year), 'tonnes': int(args.tonnes),
+                  'minimum_price': float(args.minimum_price),
+                  'maximum_price': float(args.maximum_price) }
+    df = read_json()
+    year, month, day = data_processing(df)
+    df = column_addition(year, month, day, df)
+    D, avg_price = prepare_vectorizer(df)
+    model_prediction(D, avg_price, user_input)
+
+
+
+
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--region", help=" Provide the date to predict the price of the crop", nargs="?", required=True)
