@@ -26,6 +26,66 @@ def read_json():
     return df
 
 
+def data_processing(df):
+    year = []
+    temp_month = []
+    day = []
+    for index in range(len(df)):
+        temp = str(df['date'][index])[-4:]
+        year.append(temp)
+    for index in range(len(df)):
+        temp1 = str(df['date'][index])
+        temp2 = ''
+        for i in range(0, len(temp1), 1):
+            if temp1[i] == '/':
+                temp2 = temp1[i + 1]
+                if temp1[i + 2] != '/':
+                    temp2 = temp2 + temp1[i + 2]
+                    break
+                break
+        temp_month.append(temp2)
+    for index in range(len(df)):
+        temp1 = str(df['date'][index])
+        temp2 = ''
+        for i in range(0, len(temp1), 1):
+            if temp1[i] == '/':
+                break
+            else:
+                temp2 = temp2 + temp1[i]
+        day.append(temp2)
+    month = []
+    for values in temp_month:
+        if values == '1' or values == '01':
+            month.append(1)
+        elif values == '2' or values == '02':
+            month.append(2)
+        elif values == '3' or values == '03':
+            month.append(3)
+        elif values == '4' or values == '04':
+            month.append(4)
+        elif values == '5' or values == '05':
+            month.append(5)
+        elif values == '6' or values == '06':
+            month.append(6)
+        elif values == '7' or values == '07':
+            month.append(7)
+        elif values == '8' or values == '08':
+            month.append(8)
+        elif values == '9' or values == '09':
+            month.append(9)
+        elif values == '10' or values == '10':
+            month.append(10)
+        elif values == '11' or values == '11':
+            month.append(11)
+        elif values == '12' or values == '12':
+            month.append(12)
+        elif values == '':
+            month.append('NaN')
+
+    return year, month, day
+
+
+
 
 
 
