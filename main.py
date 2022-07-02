@@ -85,6 +85,12 @@ def data_processing(df):
     return year, month, day
 
 
+def column_addition(year, month, day, df):
+    df['year'] = year
+    df['month'] = month
+    df['day'] = day
+    return df
+
 
 
 
