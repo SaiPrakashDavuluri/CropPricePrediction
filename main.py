@@ -109,7 +109,20 @@ def prepare_vectorizer(df):
     return D, avg_price
 
 
-
+def model_prediction(D, avg_price, user_input):
+    v = DictVectorizer(sparse=False)
+    X = v.fit_transform(D)
+    Y = avg_price
+    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
+    lr = LinearRegression()
+    lr.fit(x_train, y_train)
+    r2_score = lr.score(x_test, y_test)
+    test = []
+    test.append(user_input)
+    X_Pred = v.transform(test)
+    price_prediction = lr.predict(X_Pred)
+    print("Model score :", r2_score * 100, "\n")
+    print("price predicted :", price_prediction[0])
 
 
 def prediction(args):
