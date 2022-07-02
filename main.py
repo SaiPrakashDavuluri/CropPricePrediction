@@ -92,6 +92,21 @@ def column_addition(year, month, day, df):
     return df
 
 
+def prepare_vectorizer(df):
+    D = []
+    avg_price = []
+    for index in range(len(df)):
+        temp_dct = {}
+        temp_dct['region'] = df['region'][index].lower()
+        temp_dct['day'] = int(df['day'][index])
+        temp_dct['month'] = df['month'][index]
+        temp_dct['year'] = int(df['year'][index])
+        temp_dct['tonnes'] = df['tonnes'][index]
+        temp_dct['minimum_price'] = df['minimum_price'][index]
+        temp_dct['maximum_price'] = df['maximum_price'][index]
+        avg_price.append(df['avg_price'][index])
+        D.append(temp_dct)
+    return D, avg_price
 
 
 
