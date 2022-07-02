@@ -1,16 +1,9 @@
 import argparse
 import pandas as pd
-import numpy as np
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.compose import make_column_transformer
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.pipeline import make_pipeline
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.preprocessing import StandardScaler
+
 
 
 def read_json():
@@ -134,10 +127,6 @@ def prediction(args):
     df = column_addition(year, month, day, df)
     D, avg_price = prepare_vectorizer(df)
     model_prediction(D, avg_price, user_input)
-
-
-
-
 
 
 if __name__ == '__main__':
