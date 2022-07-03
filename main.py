@@ -1,4 +1,3 @@
-import argparse
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -118,10 +117,7 @@ def model_prediction(D, avg_price, user_input):
     print("price predicted :", price_prediction[0])
 
 
-def prediction(args):
-    user_input = {'region': args.region, 'day': int(args.day), 'month': int(args.month), 'year': int(args.year), 'tonnes': int(args.tonnes),
-                  'minimum_price': float(args.minimum_price),
-                  'maximum_price': float(args.maximum_price) }
+def prediction(user_input):
     df = read_json()
     year, month, day = data_processing(df)
     df = column_addition(year, month, day, df)
@@ -130,13 +126,16 @@ def prediction(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--region", help=" Provide the date to predict the price of the crop", nargs="?", required=True)
-    parser.add_argument("--day", help=" Provide the date to predict the price of the crop",  nargs="?", required=True)
-    parser.add_argument("--month", help=" Provide the date to predict the price of the crop", nargs="?", required=True)
-    parser.add_argument("--year", help=" Provide the date to predict the price of the crop", nargs="?", required=True)
-    parser.add_argument("--tonnes", help=" Provide the estimate tonnes reached the market yard", nargs="?", required=True)
-    parser.add_argument("--minimum_price", help=" Provide the state to get price specific to the state", nargs="?", required=True)
-    parser.add_argument("--maximum_price", help=" Provide the state to get price specific to the state", nargs="?", required=True)
-    args = parser.parse_args()
-    prediction(args)
+
+    region = input(" Enter the region: ")
+    day = input(" Enter the day: ")
+    month = input(" Enter the month: ")
+    year = input(" Enter the year: ")
+    tonnes = input(" Enter the tonnes: ")
+    minimum_price = input(" Enter the minimum price: ")
+    maximum_price = input(" Enter the maximum price: ")
+    user_input = {'region': region, 'day': int(day), 'month': int(month), 'year': int(year),
+                  'tonnes': int(tonnes),
+                  'minimum_price': float(minimum_price),
+                  'maximum_price': float(maximum_price)}
+    prediction(user_input)
