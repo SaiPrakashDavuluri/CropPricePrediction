@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
 
 
-
 def read_json():
     df = pd.read_csv('karnataka_tomato_price.csv')
     df.rename(columns = { 'Arrival Date': 'date',
@@ -126,7 +125,6 @@ def prediction(user_input):
 
 
 if __name__ == '__main__':
-
     region = input(" Enter the region: ")
     day = input(" Enter the day: ")
     month = input(" Enter the month: ")
