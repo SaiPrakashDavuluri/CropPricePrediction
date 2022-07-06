@@ -1,3 +1,52 @@
 # CropPricePrediction - Independent Study - CS5990
 
-## Goal: The goal of the project is to apply machine learning model to predict particular price on particular date of a crop by analyzing past dataset.
+#### Goal: The goal of the project is to apply machine learning model to predict the price of a crop on a particular date given few parameters by analyzing past dataset.
+
+#### Approach:
+
+* I have searched for a dataset that matches my problem on the internet. I found one related to the problem that I am trying to solve in the Kaggle website.
+* The dataset contains records which has information like Market, Arrival Date, Arrivals (Tonnes), Variety, Minimum Price(Rs./Quintal), Maximum Price(Rs./Quintal), Modal Price(Rs./Quintal).
+* First, I have read the dataset first using pandas library.
+* I have analyzed the data to figure out which columns are required to run the model effectively then dropped the Variety column because it doesn't serve the purpose.
+* Applied few pre-defined pandas functions to change the names of the headers in the dataframe.
+* After trying out few approaches to improve model effectiveness, I figured out that breaking up the date and cleaning it would improve the prediction of a model.
+* Divided the date into three columns as day, month, and year. Also, transformed the month into single digit like 01 or 02 to 1 or 2.
+* After doing preprocessing, added the data to the dataframe as columns. So, the dataframe now contains headers like day, month, and year.
+* As our data contains multiple columns or variables to pass as input to particular model to predict the price. I figured rather than going for traditional vectorizers like Count or TFIDF.
+* I have chosen Dictvectorizer. To send the parameters to Dictvectorizer, I have consolidated every parameter in a dictionary and passed the whole data as a list.
+* Now, data is ready to sent to model for prediction. I have split the data into the size of 0.2 in train_test_split method. So, 80% of data will be passed for training and 20% of data will be passed for training.
+* Finally, sent the data to model to calculate the model precision score. To collect the input/interact with user the program will ask user to provide certain information like region, day, month, year, tonnes, minimum_price, and maximum_price to predict the average price.
+
+
+#### Reason for choosing this model for my project:
+
+* I have tested below models and came to the conclusion that LinearRegression model has better accuracy and results.
+
+                          Models Tested:
+                             LogisticRegression
+                             Multinomial Naive Bayes 
+                             RandomForestClassifier
+                             DecisionTreeClassifier
+
+
+
+#### Functions:
+
+read_json():
+* This method reads the data from excel file. 
+* After reading the data, it renames the columns and removes a column called variety which is not required for the project.
+* Finally, returns the dataframe as output.
+
+data_processing(df):
+* This method takes dataframe as input parameter. First, three lists are defined called day, temp_month, and year.
+* Using for loop, it iterates the rows in the dataframe to collect th year from every column and stores it in the year list.
+* Following the same logic, to collect the month and day data I have used for loop and stores the result in temp_month and day lists.
+* To transform every value in the list of temp_month to single digit, I have used for loop to iterate and used if, elif block to transform the values into single digits and stored the final results in month list.
+* this method returned month, day, and year list as output.
+
+column_addition(year, month, day, df):
+* This method takes year, month, day, and df dataframe as inputs.
+* The primary use of this method is to add these lists as columns to the data frame.
+* After adding these lists to the dataframe, I am returning the df as output.
+
+
