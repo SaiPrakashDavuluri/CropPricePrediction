@@ -77,3 +77,16 @@ model_prediction(D, avg_price, user_input):
 ![img.png](docs/img.png)
 
 
+#### Deployment in Google Cloud Platform:
+
+* I have deployed the following project on docker container in local machine as well as on the Google Cloud Platform.
+
+![img.png](docs/img1.png)
+
+![img_1.png](docs/img2.png)
+
+![img_2.png](docs/img3.png)
+
+![img_3.png](docs/img4.png)
+
+
