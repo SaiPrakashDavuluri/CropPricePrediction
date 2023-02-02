@@ -1,9 +1,8 @@
-# CropPricePrediction - Independent Study - CS5990
+### Goal
+The goal of the project is to apply machine learning model to predict the price of a crop on a particular date given few parameters by analyzing past dataset.
 
-#### Goal: The goal of the project is to apply machine learning model to predict the price of a crop on a particular date given few parameters by analyzing past dataset.
 
-
-#### How to run hte project:
+#### How to run the project:
 * Clone the repository using git clone 'URL'  from git repository.
 * Navigate to the project folder by using 'cd CropPricePrediction'
 * Install the required libraries using 'pipenv install'
